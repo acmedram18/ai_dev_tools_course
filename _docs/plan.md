@@ -55,8 +55,9 @@ discouraging the same person from getting the same chore in consecutive weeks.
    some chores being less frequent than weekly.
 
 ## Tech stack
-- Python 3
-- Django (incl. Django templates for pages)
+- Python 3.12 (via pyenv)
+- Django 6.1 (incl. Django templates for pages)
+- SQLite (local development)
 
 ## Build steps (proposed)
 1. Scaffold Django project + `chores` app.
