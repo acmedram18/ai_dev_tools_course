@@ -10,11 +10,11 @@ Ordered by dependency. Small tasks, each with a clear done-criterion.
 - [x] **Done when:** dev server starts and the Django welcome page renders.
 
 ## 2. Data models
-- [ ] Define `Member` (name), `Chore` (name, weight 1–5),
+- [x] Define `Member` (name), `Chore` (name, weight 1–5),
       `Assignment` (chore, member, week, completed).
-- [ ] Add constraints (unique assignment per chore+week, weight range check).
-- [ ] Create and apply migrations.
-- **Done when:** fixtures can be loaded and queried via the Django shell.
+- [x] Add constraints (unique assignment per chore+week, weight range check).
+- [x] Create and apply migrations.
+- [x] **Done when:** fixtures can be loaded and queried via the Django shell.
 
 ## 3. Balancing algorithm (service + tests)
 - [ ] Implement weekly generation: equal target load =

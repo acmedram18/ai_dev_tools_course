@@ -1,0 +1,37 @@
+[
+  {
+    "model": "chores.member",
+    "pk": 1,
+    "fields": { "name": "Ana" }
+  },
+  {
+    "model": "chores.member",
+    "pk": 2,
+    "fields": { "name": "Bruno" }
+  },
+  {
+    "model": "chores.member",
+    "pk": 3,
+    "fields": { "name": "Carla" }
+  },
+  {
+    "model": "chores.chore",
+    "pk": 1,
+    "fields": { "name": "Cocinar la cena", "weight": 3, "is_active": true }
+  },
+  {
+    "model": "chores.chore",
+    "pk": 2,
+    "fields": { "name": "Lavar los platos", "weight": 2, "is_active": true }
+  },
+  {
+    "model": "chores.chore",
+    "pk": 3,
+    "fields": { "name": "Sacar la basura", "weight": 1, "is_active": true }
+  },
+  {
+    "model": "chores.chore",
+    "pk": 4,
+    "fields": { "name": "Limpiar el baño", "weight": 4, "is_active": false }
+  }
+]
