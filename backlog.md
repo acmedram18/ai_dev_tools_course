@@ -3,11 +3,11 @@
 Ordered by dependency. Small tasks, each with a clear done-criterion.
 
 ## 1. Scaffold Django project
-- [ ] `django-admin startproject` inside the repo (project root), using the
+- [x] `django-admin startproject` inside the repo (project root), using the
       repo venv (`source .venv/bin/activate` first).
-- [ ] Create the `chores` app and register it in `INSTALLED_APPS`.
-- [ ] Verify `python manage.py check` and `migrate` run clean.
-- **Done when:** dev server starts and the Django welcome page renders.
+- [x] Create the `chores` app and register it in `INSTALLED_APPS`.
+- [x] Verify `python manage.py check` and `migrate` run clean.
+- [x] **Done when:** dev server starts and the Django welcome page renders.
 
 ## 2. Data models
 - [ ] Define `Member` (name), `Chore` (name, weight 1–5),
