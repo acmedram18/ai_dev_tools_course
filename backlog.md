@@ -17,12 +17,12 @@ Ordered by dependency. Small tasks, each with a clear done-criterion.
 - [x] **Done when:** fixtures can be loaded and queried via the Django shell.
 
 ## 3. Balancing algorithm (service + tests)
-- [ ] Implement weekly generation: equal target load =
+- [x] Implement weekly generation: equal target load =
       total chore points ÷ member count.
-- [ ] Add repeat discouragement using the previous week's assignments
+- [x] Add repeat discouragement using the previous week's assignments
       (streak tracking; only repeat if needed to hit the target).
-- [ ] Unit-test the algorithm (even loads, odd loads, repeats discouraged).
-- **Done when:** algorithm tests pass with no manual verification needed.
+- [x] Unit-test the algorithm (even loads, odd loads, repeats discouraged).
+- [x] **Done when:** algorithm tests pass with no manual verification needed.
 
 ## 4. Views & URLs
 - [ ] Pages: members, chores, weekly assignment (generate/regenerate),
