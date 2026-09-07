@@ -24,25 +24,19 @@ implementation is planned — see [`_docs/plan.md`](_docs/plan.md).
 
 ## Tech stack
 
-- **Python 3.12** (managed with pyenv)
-- **Django 6.1** (see `requirements.txt`)
+- **Python 3.12** (managed via `uv`)
+- **Django 6.1** (see `pyproject.toml`)
 - SQLite for local development
+- Dependencies and virtualenv managed with **uv**
 
 ## Setup
 
 ```bash
-# 1. Ensure pyenv has Python 3.12 installed
-pyenv install 3.12   # once, if missing
+# 1. Install uv (if missing) — https://docs.astral.sh/uv/
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# 2. (One-time) point the repo at Python 3.12
-pyenv local 3.12
-
-# 3. Create and activate a virtual environment
-python -m venv .venv
-source .venv/bin/activate
-
-# 4. Install dependencies
-pip install -r requirements.txt
+# 2. Sync the environment (creates .venv and installs Django per the lockfile)
+uv sync
 ```
 
 Then scaffold the Django project and run it (instructions will follow once the

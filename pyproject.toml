@@ -1,0 +1,16 @@
+[project]
+name = "chorebalancer"
+version = "0.1.0"
+description = "ChoreBalancer — household chore management for the AI Dev Tools course"
+readme = "README.md"
+authors = [
+    { name = "acmedram18", email = "acmedram18@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "django>=6.1.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
