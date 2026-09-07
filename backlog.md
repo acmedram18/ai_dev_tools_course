@@ -25,10 +25,10 @@ Ordered by dependency. Small tasks, each with a clear done-criterion.
 - [x] **Done when:** algorithm tests pass with no manual verification needed.
 
 ## 4. Views & URLs
-- [ ] Pages: members, chores, weekly assignment (generate/regenerate),
+- [x] Pages: members, chores, weekly assignment (generate/regenerate),
       checklist to mark completions.
-- [ ] Wire up URLs and simple Django templates.
-- **Done when:** each page is reachable and the checklist POST updates
+- [x] Wire up URLs and simple Django templates.
+- [x] **Done when:** each page is reachable and the checklist POST updates
       `completed`.
 
 ## 5. Polish & docs

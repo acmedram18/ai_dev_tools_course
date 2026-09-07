@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 
 from django.test import TestCase
+from django.urls import reverse
 
 from .balancer import generate_assignments, monday_of
 from .models import Assignment, Chore, Member
@@ -110,3 +111,68 @@ class ModelConstraintTests(TestCase):
             Assignment.objects.create(
                 chore=chore, member=member, week_start=week
             )
+
+
+class ViewTests(TestCase):
+    def setUp(self):
+        self.ana = Member.objects.create(name="Ana")
+        self.bruno = Member.objects.create(name="Bruno")
+        Chore.objects.create(name="Dishes", weight=3)
+        Chore.objects.create(name="Trash", weight=2)
+        self.week = monday_of(date(2026, 9, 7))
+
+    def week_url(self):
+        return reverse(
+            "chores:week-date",
+            args=[self.week.year, self.week.month, self.week.day],
+        )
+
+    def test_pages_reachable(self):
+        for name in ("chores:home", "chores:members", "chores:chores", "chores:week"):
+            response = self.client.get(reverse(name))
+            self.assertEqual(response.status_code, 200, name)
+
+    def test_add_member(self):
+        response = self.client.post(
+            reverse("chores:members"), {"name": "Carla"}
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Member.objects.filter(name="Carla").exists())
+
+    def test_add_chore(self):
+        response = self.client.post(
+            reverse("chores:chores"), {"name": "Bathroom", "weight": "4"}
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Chore.objects.filter(name="Bathroom").exists())
+
+    def test_generate_week_creates_assignments(self):
+        response = self.client.post(
+            reverse(
+                "chores:week-generate",
+                args=[self.week.year, self.week.month, self.week.day],
+            )
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Assignment.objects.filter(week_start=self.week).count(), 2)
+
+    def test_checklist_updates_completed(self):
+        self.client.post(
+            reverse(
+                "chores:week-generate",
+                args=[self.week.year, self.week.month, self.week.day],
+            )
+        )
+        assignment = Assignment.objects.filter(week_start=self.week).first()
+        other = Assignment.objects.filter(week_start=self.week).exclude(pk=assignment.pk).first()
+        self.client.post(
+            reverse(
+                "chores:week-complete",
+                args=[self.week.year, self.week.month, self.week.day],
+            ),
+            {"completed": [str(assignment.id)]},
+        )
+        assignment.refresh_from_db()
+        other.refresh_from_db()
+        self.assertTrue(assignment.completed)
+        self.assertFalse(other.completed)

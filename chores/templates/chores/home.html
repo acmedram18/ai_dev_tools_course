@@ -1,0 +1,16 @@
+{% extends "chores/base.html" %}
+
+{% block title %}Home · ChoreBalancer{% endblock %}
+
+{% block content %}
+  <h1>ChoreBalancer</h1>
+  <p>
+    {{ member_count }} member{{ member_count|pluralize }},
+    {{ chore_count }} active chore{{ chore_count|pluralize }}.
+  </p>
+  <ul>
+    <li><a href="{% url 'chores:week' %}">Assignments for the week of {{ week_start }}</a></li>
+    <li><a href="{% url 'chores:members' %}">Manage members</a></li>
+    <li><a href="{% url 'chores:chores' %}">Manage chores</a></li>
+  </ul>
+{% endblock %}

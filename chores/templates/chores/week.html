@@ -1,0 +1,42 @@
+{% extends "chores/base.html" %}
+
+{% block title %}Week of {{ week_start }} · ChoreBalancer{% endblock %}
+
+{% block content %}
+  <h1>Week of {{ week_start }}</h1>
+
+  <form method="post" action="{% url 'chores:week-generate' week_start.year week_start.month week_start.day %}">
+    {% csrf_token %}
+    <button type="submit">
+      {% if generated %}Regenerate assignments{% else %}Generate assignments{% endif %}
+    </button>
+  </form>
+
+  {% if generated %}
+    <form method="post"
+          action="{% url 'chores:week-complete' week_start.year week_start.month week_start.day %}">
+      {% csrf_token %}
+      <table border="1" cellpadding="4">
+        <thead>
+          <tr><th>Chore</th><th>Weight</th><th>Member</th><th>Done</th></tr>
+        </thead>
+        <tbody>
+          {% for a in assignments %}
+            <tr>
+              <td>{{ a.chore.name }}</td>
+              <td>{{ a.chore.weight }}</td>
+              <td>{{ a.member.name }}</td>
+              <td>
+                <input type="checkbox" name="completed" value="{{ a.id }}"
+                       {% if a.completed %}checked{% endif %}>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit">Save checklist</button>
+    </form>
+  {% else %}
+    <p>No assignments for this week yet. Click "Generate assignments" to create them.</p>
+  {% endif %}
+{% endblock %}
