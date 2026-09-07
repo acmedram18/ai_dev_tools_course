@@ -32,7 +32,7 @@ Ordered by dependency. Small tasks, each with a clear done-criterion.
       `completed`.
 
 ## 5. Polish & docs
-- [ ] Base CSS so pages are readable.
-- [ ] `manage.py test` passes; `manage.py check --deploy` has no surprises.
-- [ ] Update `README.md` with run instructions.
-- **Done when:** a fresh clone can set up and run the app end-to-end.
+- [x] Base CSS so pages are readable.
+- [x] `manage.py test` passes; `manage.py check --deploy` has no surprises.
+- [x] Update `README.md` with run instructions.
+- [x] **Done when:** a fresh clone can set up and run the app end-to-end.

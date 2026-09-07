@@ -12,8 +12,9 @@ the same chore two weeks in a row.
 
 ## Status
 
-This is a homework project scaffolded for the AI Dev Tools course. Full
-implementation is planned — see [`_docs/plan.md`](_docs/plan.md).
+Homework project for the AI Dev Tools course. The app is fully implemented —
+see [`_docs/plan.md`](_docs/plan.md) for the design and [`backlog.md`](backlog.md)
+for the build log.
 
 ## Scope
 
@@ -39,5 +40,32 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv sync
 ```
 
-Then scaffold the Django project and run it (instructions will follow once the
-project is created).
+## Run
+
+```bash
+# Apply database migrations (first time only)
+uv run python manage.py migrate
+
+# Optional: load sample members and chores
+uv run python manage.py loaddata sample
+
+# Start the dev server
+uv run python manage.py runserver
+```
+
+Then open http://127.0.0.1:8000/ and use "This week" to generate the weekly
+assignments and mark them complete. The Django admin (http://127.0.0.1:8000/admin/)
+is also available if you create a superuser with `createsuperuser`.
+
+## Tests
+
+```bash
+uv run python manage.py test
+```
+
+## Production note
+
+This app is intended for local, single-user use. `python manage.py check --deploy`
+will flag the dev-only settings (`DEBUG=True`, generated `SECRET_KEY`, empty
+`ALLOWED_HOSTS`, console email backend, and HTTPS-related options); hardening for
+production deployment is out of scope.
