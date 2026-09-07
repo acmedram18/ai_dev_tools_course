@@ -14,6 +14,8 @@ class MemberForm(forms.ModelForm):
 
 
 class ChoreForm(forms.ModelForm):
+    weight = forms.IntegerField(min_value=1, max_value=5)
+
     class Meta:
         model = Chore
         fields = ["name", "weight"]
